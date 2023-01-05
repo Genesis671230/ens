@@ -109,17 +109,13 @@ function App() {
             onMouseLeave={textLeave}
           >
             Join the{" "}
-            <motion.div className="inline  font-bold ">
-              {" "}
-              <span className="text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-[#4538f3]">
-
+            <span className="text-transparent inline  font-bold  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-[#4538f3]">
               Emirate National School
-              </span>
-            </motion.div>{" "}
+            </span>
             and
             <span className="text-slate-900 text-[3rem] block">
               <Typewriter
-              loop={true}
+                loop={true}
                 words={[
                   " Secure Your Child's Future",
                   " set your child for academic excellence",
@@ -191,21 +187,19 @@ function App() {
             "Achieving Greatness":
           </span>{" "}
           <span className="text-slate-800 text-[1.8rem] block">
-              <Typewriter
+            <Typewriter
               loop={true}
-                words={[
-                  " How Our School Became a Leader in Education!",
-                  " School's outstanding performance!",
-                  " Reasons for high achievements!",
-                ]}
-                cursor="|"
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={1000}
-              ></Typewriter>
-            </span>
-
-          
+              words={[
+                " How Our School Became a Leader in Education!",
+                " School's outstanding performance!",
+                " Reasons for high achievements!",
+              ]}
+              cursor="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            ></Typewriter>
+          </span>
         </div>
         <div className="flex w-full mb-10 justify-evenly flex-wrap gap-10">
           <motion.div
@@ -429,8 +423,8 @@ function App() {
 
       <div className="bg-gray-900 py-24 gap-10 flex flex-col  items-start px-16 ">
         <div className="md:text-[4rem] text-[2rem] font-[Nunito] font-bold ">
-        <span className="text-transparent  bg-clip-text bg-gradient-to-l from-sky-500 via-rose-400 to-amber-600 text-[#4538f3]">
-             Latest News
+          <span className="text-transparent  bg-clip-text bg-gradient-to-l from-sky-500 via-rose-400 to-amber-600 text-[#4538f3]">
+            Latest News
           </span>
         </div>
 
