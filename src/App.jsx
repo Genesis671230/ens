@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "./components/navbar/Navbar";
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import { AwardIcon, SchoolIcon } from "./assets";
@@ -19,6 +19,10 @@ import MbzCityIcon from "./assets/MbzCity.jpg";
 import InternationIcon from "./assets/international.png";
 import CogniaIcon from "./assets/cognia.png";
 import UnitedNationIcon from "./assets/unitedNation.png";
+import GraduatesIcon from "./assets/graduates.jpg";
+import HallIcon from "./assets/hall.jpg";
+import { Typewriter } from "react-simple-typewriter";
+import { AiOutlineArrowDown, AiOutlineArrowLeft } from "react-icons/ai";
 
 function App() {
   const [mousePosition, setMousePosition] = useState({
@@ -30,7 +34,8 @@ function App() {
   const [isOpen, setIsOpen] = useState(undefined);
   // const { scrollYProgress } = useViewportScroll();
   // const scale = useTransform(scrollYProgress, [0, 1], [0.2, 1.2]);
-
+  const [width, setWidth] = useState(0);
+  const carousal = useRef();
   const variants = {
     default: {
       x: mousePosition.x,
@@ -80,6 +85,10 @@ function App() {
       window.removeEventListener("mousemove", mouseMove);
     };
   }, []);
+
+  useEffect(() => {
+    setWidth(carousal.current.scrollWidth - carousal.current.offsetWidth);
+  }, []);
   return (
     <div className="h-screen bg-[#ffffff] text-black">
       <motion.div
@@ -99,8 +108,27 @@ function App() {
             onMouseEnter={textEnter}
             onMouseLeave={textLeave}
           >
-            Join the <motion.div className="inline font-bold text-[#4538f3]"> Emirate National School</motion.div> and Secure Your Child's
-            Future
+            Join the{" "}
+            <motion.div className="inline  font-bold text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-[#4538f3]">
+              {" "}
+              Emirate National School
+            </motion.div>{" "}
+            and
+            <span className="text-slate-900 text-[3rem] block">
+              <Typewriter
+              loop={true}
+                words={[
+                  " Secure Your Child's Future",
+                  " set your child for academic excellence",
+                  " unlock your child's full potential",
+                  " give your child world-class education",
+                ]}
+                cursor="|"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              ></Typewriter>
+            </span>
           </motion.div>
           <span className="mt-16 text-[22px] font-[Nunito] leading-tight text-left block md:text-[2rem]">
             <span className="">
@@ -127,7 +155,10 @@ function App() {
               transition={{ duration: 0.5 }}
               className="px-4 py-2 flex font-normal w-fit  font-[Lato] whitespace-nowrap items-center bg-[#4538f3] text-slate-100 md:px-5 md:py-3 border-2    border-solid border-[#4538f3] rounded-md md:font-semibold tracking-[1px]"
             >
-              Register Online
+              Register Online{" "}
+              <span>
+                <AiOutlineArrowDown className="animate-bounce ml-4" />
+              </span>
             </motion.div>
           </div>
         </div>
@@ -152,19 +183,38 @@ function App() {
           onMouseLeave={textLeave}
           className="md:text-[2rem] text-[1rem] m-10 mb-20 w-full md:w-[35%] text-center   font-bold font-[Lato] text-gray-900 select-none "
         >
-          "Achieving Greatness": How Our School Became a Leader in Education
+          <span className="bg-clip-text text-transparent bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-teal-800 via-pink-500 to-neutral-900">
+            {" "}
+            "Achieving Greatness":
+          </span>{" "}
+          <span className="text-slate-800 text-[1.8rem] block">
+              <Typewriter
+              loop={true}
+                words={[
+                  " How Our School Became a Leader in Education!",
+                  " School's outstanding performance!",
+                  " Reasons for high achievements!",
+                ]}
+                cursor="|"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              ></Typewriter>
+            </span>
+
+          
         </div>
         <div className="flex w-full mb-10 justify-evenly flex-wrap gap-10">
           <motion.div
             whileInView={{ y: [100, 0], opacity: [0, 1] }}
-            whileHover={{scale:1.2}}
-            transition={{duration: 1}}
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 1 }}
             variants={variantDetailCards}
             initial="initial"
             animate="visible"
             onMouseEnter={textEnter}
             onMouseLeave={textLeave}
-            className=" border-2 border-gray-400 bg-gray-200 rounded-lg flex flex-col items-center  p-16"
+            className=" border-2 border-gray-400 shadow-lg bg-sky-300 rounded-lg flex flex-col items-center  p-16"
           >
             <motion.div whileHover={{ y: -10 }}>
               <IoMdPeople className="w-10 h-10 text-blue-500 " />
@@ -180,15 +230,15 @@ function App() {
           </motion.div>
           <motion.div
             whileInView={{ y: [100, 0], opacity: [0, 1] }}
-            whileHover={{scale:1.2}}
-            transition={{duration: 1}}
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
             variants={variantDetailCards}
             initial="initial"
             animate="visible"
             onMouseEnter={textEnter}
             onMouseLeave={textLeave}
-            className="p-16 border-2 border-gray-400 bg-gray-200 rounded-lg flex flex-col items-center"
+            className="p-16 border-2 border-gray-400 shadow-lg  rounded-lg flex flex-col items-center"
           >
             <motion.div whileHover={{ y: -10 }}>
               <FaUserGraduate className="w-10 h-10 text-green-600 " />
@@ -199,15 +249,15 @@ function App() {
 
           <motion.div
             whileInView={{ y: [100, 0], opacity: [0, 1] }}
-            whileHover={{scale:1.2}}
-            transition={{duration: 1}}
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
             variants={variantDetailCards}
             initial="initial"
             animate="visible"
             onMouseEnter={textEnter}
             onMouseLeave={textLeave}
-            className="p-16 border-2 border-gray-400 bg-gray-200 rounded-lg flex flex-col items-center"
+            className="p-16 border-2 border-gray-400 shadow-lg bg-yellow-400 rounded-lg flex flex-col items-center"
           >
             <motion.div whileHover={{ y: -10 }}>
               <IoPersonSharp className="w-10 h-10 text-red-500 " />
@@ -218,15 +268,15 @@ function App() {
 
           <motion.div
             whileInView={{ y: [100, 0], opacity: [0, 1] }}
-            whileHover={{scale:1.2}}
-            transition={{duration: 1}}
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
             variants={variantDetailCards}
             initial="initial"
             animate="visible"
             onMouseEnter={textEnter}
             onMouseLeave={textLeave}
-            className="p-16 border-2 border-gray-400 bg-gray-200 rounded-lg flex flex-col items-center"
+            className="p-16 border-2 border-gray-400 shadow-lg bg-purple-600 rounded-lg flex flex-col items-center"
           >
             <motion.div whileHover={{ y: -10 }}>
               <FaSchool className="w-10 h-10 text-yellow-500 " />
@@ -237,8 +287,12 @@ function App() {
         </div>
       </div>
 
-      <div className=" bg-gray-100 py-20 flex flex-col relative items-center ">
-        <div className="text-[2rem] font-[Lato] mt-10 mb-4 text-gray-900">
+      <div
+        onMouseEnter={textEnter}
+        onMouseLeave={textLeave}
+        className=" bg-gray-100 py-20 flex flex-col relative items-center "
+      >
+        <div className="text-[2rem] font-[Lato] mt-10 mb-4 text-transparent bg-clip-text bg-gradient-to-tl from-emerald-500 via-fuchsia-900 to-pink-500 text-gray-900">
           ENS Online Services
         </div>
         <div className="text-center">
@@ -371,86 +425,64 @@ function App() {
       </div>
 
       <div className="bg-gray-900 py-24 gap-10 flex flex-col  items-start px-16 ">
-          <div className="md:text-[4rem] text-[2rem] font-[Roboto] text-slate-50">
-            Latest News
-          </div>
+        <div className="md:text-[4rem] text-[2rem] font-[Nunito] font-bold text-transparent  bg-clip-text bg-gradient-to-l from-sky-500 via-rose-400 to-amber-600 text-[#4538f3]">
+          Latest News
+        </div>
 
         <div className="flex  w-full mb-10 justify-evenly flex-wrap gap-10">
           <motion.div
-            whileInView={{ opacity: [0, 1] }}
-            className="shadow-[0_10px_20px_rgba(240,_46,_170,_0.7)] flex flex-col items-center w-[40rem] object-cover"
+            ref={carousal}
+            whileTap={{ cursor: "grabbing" }}
+            className="cursor-grab overflow-hidden "
           >
-            <img
-              src={AwardIcon}
-              className="rounded-tl-md rounded-tr-md h-[25rem] w-[40rem] 
-              object-cover"
-              alt=""
-            />
-            <div className="p-6 bg-slate-100 rounded-sm">
-              <div>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Incidunt cupiditate fuga dolorem ducimus neque distinctio
-                expedita deserunt maxime corporis atque? Repellat autem,
-                voluptate facilis voluptatibus nostrum fugit labore illo. Rerum!
-              </div>
-              <div className="px-2 mt-4 py-1 flex font-normal  font-[Lato] whitespace-nowrap items-center bg-red-600 text-slate-100 md:px-3 md:py-2 border-2    border-solid  rounded-md md:font-semibold tracking-[1px] w-fit">
-                Read more
-              </div>
-            </div>
-          </motion.div>
-          <motion.div
-            whileInView={{ opacity: [0, 1] }}
-            className="shadow-[0_10px_20px_rgba(240,_46,_170,_0.7)]  flex flex-col items-center  w-[40rem]
-              object-cover
-            "
-          >
-            <img
-              src={EmirateIcon}
-              className="rounded-tl-md w-[40rem] h-[25rem] object-cover rounded-tr-md "
-              alt=""
-            />
-            <div className="p-6 bg-slate-100 rounded-sm">
-              <div>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Incidunt cupiditate fuga dolorem ducimus neque distinctio
-                expedita deserunt maxime corporis atque? Repellat autem,
-                voluptate facilis voluptatibus nostrum fugit labore illo. Rerum!
-              </div>
-              <div className="px-2 mt-4 py-1 flex font-normal  font-[Lato] whitespace-nowrap items-center bg-red-600 text-slate-100 md:px-3 md:py-2 border-2    border-solid  rounded-md md:font-semibold tracking-[1px] w-fit">
-                Read more
-              </div>
-            </div>
-          </motion.div>
-          <motion.div
-            whileInView={{ opacity: [0, 1] }}
-            className="shadow-[0_10px_20px_rgba(240,_46,_170,_0.7)]  flex flex-col items-center w-[40rem]
-              object-cover 
-            "
-          >
-            <img
-              src={GirlAwardIcon}
-              className="rounded-tl-md w-[40rem] h-[25rem] object-cover rounded-tr-md "
-              alt=""
-            />
-            <div className="p-6 bg-slate-100 rounded-sm">
-              <div>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Incidunt cupiditate fuga dolorem ducimus neque distinctio
-                expedita deserunt maxime corporis atque? Repellat autem,
-                voluptate facilis voluptatibus nostrum fugit labore illo. Rerum!
-              </div>
-              <div className="px-2 mt-4 py-1 flex font-normal  font-[Lato] whitespace-nowrap items-center bg-red-600 text-slate-100 md:px-3 md:py-2 border-2    border-solid  rounded-md md:font-semibold tracking-[1px] w-fit">
-                Read more
-              </div>
-            </div>
+            <motion.div
+              drag="x"
+              dragConstraints={{ right: 0, left: -width }}
+              className="flex   "
+            >
+              {[
+                AwardIcon,
+                EmirateIcon,
+                GirlAwardIcon,
+                GraduatesIcon,
+                HallIcon,
+              ].map((item) => (
+                <motion.div
+                  whileInView={{ opacity: [0, 1] }}
+                  className="shadow-lg flex flex-col p-4 items-center rounded-[2rem] min-w-[30rem] object-cover overflow-hidden"
+                >
+                  <img
+                    src={item}
+                    className="pointer-events-none  rounded-tl-md rounded-tr-md h-full w-full hover:scale-105  transition-all duration-500
+                  object-cover"
+                    alt=""
+                  />
+                  <div
+                    onMouseEnter={textEnter}
+                    onMouseLeave={textLeave}
+                    className="p-6 bg-slate-200 rounded-sm"
+                  >
+                    <div>
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Incidunt cupiditate fuga dolorem ducimus
+                    </div>
+                    <div className="px-2 mt-4 py-1 flex font-normal  font-[Lato] whitespace-nowrap items-center bg-purple-600 text-slate-900 md:px-3 md:py-2 border-2    border-solid  rounded-md md:font-semibold tracking-[1px] w-fit">
+                      Read more
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
-      <div className="bg-gray-50 py-24 pb-40 gap-10 flex flex-col  items-center px-16 ">
-        <div className="">
-          <div className="md:text-[4rem] text-center  text-sm px-32 mb-10 font-[Roboto] text-slate-800">
-            Our Campuses
+      <div className="bg-gray-50 py-24  gap-10 flex flex-col  items-center px-16 ">
+        <div onMouseEnter={textEnter} onMouseLeave={textLeave} className="">
+          <div className="md:text-[4rem] text-center   text-sm px-32 mb-10 font-[Roboto] ">
+            <span className="text-transparent bg-clip-text bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-fuchsia-700 via-zinc-600 to-cyan-700">
+              Our Campuses
+            </span>
           </div>
 
           <div className="md:text-[24px]  text-sm px-32 mb-10 font-[Lato] text-slate-800">
@@ -459,136 +491,83 @@ function App() {
         </div>
 
         <div className="flex  w-full mb-10 justify-center   flex-wrap gap-16">
-          <motion.div
-            onMouseEnter={textEnter}
-            onMouseLeave={textLeave}
-            whileInView={{ opacity: [0, 1] }}
-            className="w-full
-            shadow-md
-              rounded-lg  overflow-hidden lg:max-w-sm"
-          >
-            <img
-              className="object-cover w-full h-48 hover:scale-105  transition-all duration-500"
-              src={DubaiIcon}
-              alt="image"
-            />
-            <div className="p-4">
-              <h4 className="text-xl font-semibold tracking-tight text-blue-600">
-                Dubai City Campus
-              </h4>
-              <p className="mb-2 leading-normal">
-                Dubai Campus offer exclusive access to modern education with
-                talented faculties.
-              </p>
-              <button className="px-4 mt-5 py-2 text-sm text-black bg-green-500 rounded shadow">
-                Read more
-              </button>
-            </div>
-          </motion.div>
-          <motion.div
-            onMouseEnter={textEnter}
-            onMouseLeave={textLeave}
-            whileInView={{ opacity: [0, 1] }}
-            className="w-full shadow-md rounded-lg overflow-hidden  lg:max-w-sm"
-          >
-            <img
-              className="object-cover w-full hover:scale-105  transition-all duration-500 h-48"
-              src={MbzCityIcon}
-              alt="image"
-            />
-            <div className="p-4">
-              <h4 className="text-xl font-semibold tracking-tight text-blue-600">
-                MBZ City Campus
-              </h4>
-              <p className="mb-2 leading-normal">
-                Discover the Learning Oasis of MBZ City: Emirate National School
-                Campus.
-              </p>
-              <button className="px-4 mt-5 py-2 text-sm text-black bg-green-500 rounded shadow">
-                Read more
-              </button>
-            </div>
-          </motion.div>
-
-          <motion.div
-            onMouseEnter={textEnter}
-            onMouseLeave={textLeave}
-            whileInView={{ opacity: [0, 1] }}
-            className="w-full shadow-md rounded-lg overflow-hidden lg:max-w-sm"
-          >
-            <img
-              className="object-cover w-full h-48 hover:scale-105  transition-all duration-500"
-              src={AbuZabiIcon}
-              alt="image"
-            />
-            <div className="p-4">
-              <h4 className="text-xl font-semibold tracking-tight text-blue-600">
-                Abu Dhabi Campus
-              </h4>
-              <p className="mb-2 leading-normal">
-                Nurturing the Leaders of Tomorrow at Emirate National School's
-                Abu Dhabi Campus.
-              </p>
-              <button className="px-4 mt-5 py-2 text-sm text-black bg-green-500 rounded shadow">
-                Read more
-              </button>
-            </div>
-          </motion.div>
-          <motion.div
-            onMouseEnter={textEnter}
-            onMouseLeave={textLeave}
-            whileInView={{ opacity: [0, 1] }}
-            className="w-full shadow-md rounded-lg overflow-hidden  lg:max-w-sm"
-          >
-            <img
-              className="object-cover w-full h-48 hover:scale-105  transition-all duration-500"
-              src={SharjahIcon}
-              alt="image"
-            />
-            <div className="p-4">
-              <h4 className="text-xl font-semibold tracking-tight text-blue-600">
-                Sharjah Campus
-              </h4>
-              <p className="mb-2 leading-normal">
-                A Thriving Learning Community at Sharjah's Emirate National
-                School Campus.
-              </p>
-              <button className="px-4 mt-5 py-2 text-sm text-black bg-green-500 rounded shadow">
-                Read more
-              </button>
-            </div>
-          </motion.div>
-          <motion.div
-            onMouseEnter={textEnter}
-            onMouseLeave={textLeave}
-            whileInView={{ opacity: [0, 1] }}
-            className="w-full shadow-md overflow-hidden rounded-lg  lg:max-w-sm"
-          >
-            <img
-              className="object-cover w-full h-48 
-                hover:scale-105  transition-all duration-500
-                s"
-              src={AlAinIcon}
-              alt="image"
-            />
-            <div className="p-4">
-              <h4 className="text-xl font-semibold tracking-tight text-blue-600">
-                Al Ain Campus
-              </h4>
-              <p className="mb-2 leading-normal">
-                A World-Class Education in the Heart of Al Ain: Emirate National
-                School Campus.
-              </p>
-              <button className="px-4 mt-5 py-2 text-sm text-black bg-green-500 rounded shadow">
-                Read more
-              </button>
-            </div>
-          </motion.div>
+          <div className="flex  w-full mb-10 justify-evenly flex-wrap gap-10">
+            <motion.div
+              ref={carousal}
+              whileTap={{ cursor: "grabbing" }}
+              className="cursor-grab overflow-hidden "
+            >
+              <motion.div
+                drag="x"
+                dragConstraints={{ right: 0, left: -width }}
+                className="flex   "
+              >
+                {[
+                  {
+                    img: DubaiIcon,
+                    name: "Dubai City Campus",
+                    desc: "Dubai Campus offer exclusive access to modern education with talented faculties.",
+                  },
+                  {
+                    img: EmirateIcon,
+                    name: " MBZ City Campus",
+                    desc: " Discover the Learning Oasis of MBZ City: Emirate National School Campus.",
+                  },
+                  {
+                    img: GirlAwardIcon,
+                    name: " Abu Dhabi Campus",
+                    desc: "   Nurturing the Leaders of Tomorrow at Emirate National School's Abu Dhabi Campus.",
+                  },
+                  {
+                    img: GraduatesIcon,
+                    name: " Sharjah Campus",
+                    desc: "  A Thriving Learning Community at Sharjah's Emirate National School Campus.",
+                  },
+                  {
+                    img: HallIcon,
+                    name: "Al-Ain Campus",
+                    desc: "   A World-Class Education in the Heart of Al Ain: Emirate National School Campus.",
+                  },
+                ].map((item) => (
+                  <motion.div
+                    whileInView={{ opacity: [0, 1] }}
+                    className=" flex flex-col p-4 items-center rounded-[2rem] min-w-[30rem] object-cover overflow-hidden"
+                  >
+                    <img
+                      src={item.img}
+                      className="pointer-events-none  rounded-tl-md rounded-tr-md h-full w-full hover:scale-105  transition-all duration-500
+                  object-cover"
+                      alt=""
+                    />
+                    <div
+                      onMouseEnter={textEnter}
+                      onMouseLeave={textLeave}
+                      className="p-6 rounded-sm bg-slate-200"
+                    >
+                      <div className="p-4">
+                        <h4 className="text-xl font-semibold tracking-tight text-transparent  bg-clip-text bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-lime-100 via-pink-900 to-violet-400">
+                          {item.name}
+                        </h4>
+                        <p className="mb-2 leading-normal ">{item.desc}</p>
+                        <button className="px-4 mt-5 py-2 text-sm text-black bg-green-500 rounded shadow">
+                          Read more
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </div>
 
       <div className="bg-gray-100 py-24  gap-10 flex flex-col  items-center px-16  ">
-        <div className="text-[2rem] mt-12 font-[Nunito] font-bold">
+        <div
+          onMouseEnter={textEnter}
+          onMouseLeave={textLeave}
+          className="md:text-[4rem] mt-12 font-[Nunito] font-bold  text-transparent  bg-clip-text bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-blue-200 via-amber-900 to-green-200"
+        >
           Our Partners
         </div>
 
