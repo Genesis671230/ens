@@ -109,12 +109,11 @@ function App() {
             onMouseLeave={textLeave}
           >
             Join the{" "}
-            <span className="text-transparent inline  font-bold  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-[#4538f3]">
+            <span className="inline  font-bold  text-green-600 drop-shadow-lg">
               Emirate National School
-            </span>
-              
-             {" "} and
-            <span className="text-slate-900 text-[3rem] block">
+            </span>{" "}
+            and
+            <span className="text-transparent bg-clip-text bg-gradient-to-tl from-emerald-500 via-fuchsia-900 to-pink-500 text-gray-900 text-[2rem] block">
               <Typewriter
                 loop={true}
                 words={[
