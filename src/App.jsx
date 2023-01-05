@@ -112,7 +112,8 @@ function App() {
             <span className="text-transparent inline  font-bold  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-[#4538f3]">
               Emirate National School
             </span>
-            and
+              
+             {" "} and
             <span className="text-slate-900 text-[3rem] block">
               <Typewriter
                 loop={true}
