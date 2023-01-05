@@ -109,9 +109,12 @@ function App() {
             onMouseLeave={textLeave}
           >
             Join the{" "}
-            <motion.div className="inline  font-bold text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-[#4538f3]">
+            <motion.div className="inline  font-bold ">
               {" "}
+              <span className="text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-[#4538f3]">
+
               Emirate National School
+              </span>
             </motion.div>{" "}
             and
             <span className="text-slate-900 text-[3rem] block">
@@ -425,8 +428,10 @@ function App() {
       </div>
 
       <div className="bg-gray-900 py-24 gap-10 flex flex-col  items-start px-16 ">
-        <div className="md:text-[4rem] text-[2rem] font-[Nunito] font-bold text-transparent  bg-clip-text bg-gradient-to-l from-sky-500 via-rose-400 to-amber-600 text-[#4538f3]">
-          Latest News
+        <div className="md:text-[4rem] text-[2rem] font-[Nunito] font-bold ">
+        <span className="text-transparent  bg-clip-text bg-gradient-to-l from-sky-500 via-rose-400 to-amber-600 text-[#4538f3]">
+             Latest News
+          </span>
         </div>
 
         <div className="flex  w-full mb-10 justify-evenly flex-wrap gap-10">
