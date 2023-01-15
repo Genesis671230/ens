@@ -40,7 +40,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex md:flex-row flex-col flex-wrap   justify-between  px-10 py-5 bg-slate-100 border-b-2">
+    <>
+    <div className="flex md:flex-row flex-col flex-wrap  bg-[#ffffff]  justify-between  px-10 py-5 ">
       <motion.div
         variants={variantLogo}
         initial="hidden"
@@ -100,11 +101,12 @@ const Navbar = () => {
         </motion.div>
       </motion.div>
       <div className="flex justify-center mt-4 md:mt-0">
-      <div className="flex w-fit items-center bg-[#fabe25] px-5 py-2 border-2 border-solid border-yellow-500 rounded-md font-medium md:tracking-[1px]">
+      <div className="flex w-fit items-center bg-[#1c6d6c] px-5 py-2 border-2 text-white border-solid border-[#1c6d6c] rounded-md font-medium md:tracking-[1px]">
         Contact Us
       </div>
       </div>
     </div>
+    </>
   );
 };
 

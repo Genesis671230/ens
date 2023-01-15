@@ -10,3 +10,7 @@
 /* ::-webkit-scrollbar{
     display: none;
 } */
+
+.fancy-border-radius {
+    border-radius: 53% 47% 52% 48% / 36% 41% 59% 64%;
+  }
